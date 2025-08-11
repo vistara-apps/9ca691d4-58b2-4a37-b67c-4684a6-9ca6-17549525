@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "9ca691d4 58b2 4a37 B67c 4684a6ca6abf",
+    "subtitle": "Built with Zara",
+    "description": "9ca691d4 58b2 4a37 B67c 4684a6ca6abf is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://9ca691d4-58b2-4a37-b67c-4684a6ca6abf.vistara.dev",
+    "splashImageUrl": "https://dummyimage.com/200x200/0a0b0d/ffffff.png&text=Splash",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Hero",
+    "tagline": "9ca691d4 58b2 4a37 B67c 4684a6ca6abf",
+    "screenshotUrls": [
+      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot1",
+      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot2"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://9ca691d4-58b2-4a37-b67c-4684a6ca6abf.vistara.dev/api/webhook"
+  }
+}

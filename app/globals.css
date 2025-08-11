@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 240 5% 10%;
+    --text: 0 0% 95%;
+    --muted: 0 0% 70%;
+    --accent: 180 70% 50%;
+    --primary: 240 80% 60%;
+    --surface: 240 5% 15%;
+  }
+  
+  body {
+    @apply bg-bg text-text;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-surface hover:bg-surface/80 text-text border border-white/20 px-4 py-2 rounded-md transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-surface border border-white/10 rounded-lg p-6 shadow-card;
+  }
+  
+  .quiz-card {
+    @apply bg-surface border border-white/10 rounded-lg p-4 shadow-card hover:shadow-hover transition-shadow duration-200;
+  }
+  
+  .miniapp-card {
+    @apply bg-surface border border-white/10 rounded-lg p-4 shadow-card hover:shadow-hover transition-all duration-200 hover:border-accent/30;
+  }
+  
+  .input-field {
+    @apply bg-surface border border-white/20 rounded-md px-3 py-2 text-text placeholder:text-muted focus:border-accent focus:outline-none;
+  }
+  
+  .progress-bar {
+    @apply w-full bg-surface rounded-full h-2;
+  }
+  
+  .progress-fill {
+    @apply bg-accent h-2 rounded-full transition-all duration-300;
+  }
+  
+  .tag-platform {
+    @apply bg-primary/20 text-primary px-2 py-1 rounded-sm text-xs font-medium;
+  }
+  
+  .tag-category {
+    @apply bg-accent/20 text-accent px-2 py-1 rounded-sm text-xs font-medium;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
