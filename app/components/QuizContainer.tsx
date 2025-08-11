@@ -93,21 +93,74 @@ export default function QuizContainer() {
   }
 
   if (quizCompleted) {
+    const percentage = Math.round((score / sampleQuestions.length) * 100)
+    const iqLevel = calculateIQ()
+    
     return (
       <div className="space-y-6 animate-fade-in">
-        <div className="card text-center">
-          <h2 className="text-3xl font-bold text-text mb-4">Quiz Complete! 🎉</h2>
-          <div className="space-y-4">
-            <div className="text-6xl font-bold text-accent">{score}/{sampleQuestions.length}</div>
-            <div className="text-xl text-text">Your Mini App IQ: <span className="text-accent font-semibold">{calculateIQ()}</span></div>
-            <p className="text-muted">You scored {Math.round((score / sampleQuestions.length) * 100)}% on this quiz!</p>
+        <div className="card text-center space-y-6">
+          {/* Celebration Header */}
+          <div className="space-y-3">
+            <div className="w-20 h-20 bg-gradient-to-br from-accent to-primary rounded-full flex items-center justify-center mx-auto shadow-xl">
+              <span className="text-3xl">🎉</span>
+            </div>
+            <h2 className="text-3xl font-bold text-text">Quiz Complete!</h2>
+            <p className="text-muted">Great job testing your Base knowledge</p>
           </div>
-          <button
-            onClick={resetQuiz}
-            className="btn-primary mt-6 w-full"
-          >
-            Take Quiz Again
-          </button>
+
+          {/* Score Display */}
+          <div className="bg-surface-light rounded-xl p-6 space-y-4">
+            <div className="text-6xl font-bold text-accent">{score}/{sampleQuestions.length}</div>
+            <div className="space-y-2">
+              <div className="text-2xl font-bold text-text">
+                Your Mini App IQ: <span className="text-accent">{iqLevel}</span>
+              </div>
+              <div className="w-full bg-surface rounded-full h-3 overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-accent to-accent-light rounded-full transition-all duration-1000 ease-out"
+                  style={{ width: `${percentage}%` }}
+                />
+              </div>
+              <p className="text-muted">You scored {percentage}% on this quiz!</p>
+            </div>
+          </div>
+
+          {/* Achievement Badge */}
+          <div className="bg-gradient-to-r from-accent/10 to-primary/10 border border-accent/30 rounded-xl p-4">
+            <div className="flex items-center justify-center space-x-3">
+              <span className="text-2xl">
+                {percentage >= 90 ? '🏆' : percentage >= 70 ? '🥇' : percentage >= 50 ? '🥈' : '🥉'}
+              </span>
+              <div className="text-left">
+                <p className="font-bold text-accent">
+                  {percentage >= 90 ? 'Genius Level!' : 
+                   percentage >= 70 ? 'Expert Level!' : 
+                   percentage >= 50 ? 'Intermediate Level!' : 'Keep Learning!'}
+                </p>
+                <p className="text-sm text-muted">
+                  {percentage >= 90 ? 'Outstanding Base knowledge!' : 
+                   percentage >= 70 ? 'Excellent understanding!' : 
+                   percentage >= 50 ? 'Good foundation!' : 'Room for improvement!'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="space-y-3">
+            <button
+              onClick={resetQuiz}
+              className="btn-primary w-full"
+            >
+              🔄 Take Quiz Again
+            </button>
+            <button
+              onClick={() => {/* Share functionality could be added here */}}
+              className="btn-secondary w-full"
+            >
+              📤 Share Results
+            </button>
+          </div>
         </div>
       </div>
     )

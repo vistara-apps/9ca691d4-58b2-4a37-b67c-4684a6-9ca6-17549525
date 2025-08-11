@@ -6,36 +6,68 @@
   :root {
     --bg: 240 5% 10%;
     --text: 0 0% 95%;
+    --text-secondary: 0 0% 85%;
     --muted: 0 0% 70%;
+    --muted-light: 0 0% 60%;
     --accent: 180 70% 50%;
+    --accent-light: 180 70% 60%;
     --primary: 240 80% 60%;
+    --primary-light: 240 80% 70%;
     --surface: 240 5% 15%;
+    --surface-light: 240 5% 18%;
+    --border: 240 5% 20%;
+    --success: 142 76% 36%;
+    --error: 0 84% 60%;
+    --warning: 38 92% 50%;
   }
   
   body {
-    @apply bg-bg text-text;
+    @apply bg-bg text-text font-medium leading-relaxed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold leading-tight;
+  }
+
+  h1 { @apply text-2xl sm:text-3xl; }
+  h2 { @apply text-xl sm:text-2xl; }
+  h3 { @apply text-lg sm:text-xl; }
+  h4 { @apply text-base sm:text-lg; }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md transition-colors duration-200;
+    @apply bg-primary hover:bg-primary-light active:bg-primary/80 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl;
   }
   
   .btn-secondary {
-    @apply bg-surface hover:bg-surface/80 text-text border border-white/20 px-4 py-2 rounded-md transition-colors duration-200;
+    @apply bg-surface hover:bg-surface-light active:bg-surface/80 text-text border border-border hover:border-accent/30 px-6 py-3 rounded-lg font-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-lg;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-surface/50 active:bg-surface/70 text-text px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-lg bg-surface hover:bg-surface-light active:bg-surface/80 transition-all duration-200 transform hover:scale-105 active:scale-95;
   }
   
   .card {
-    @apply bg-surface border border-white/10 rounded-lg p-6 shadow-card;
+    @apply bg-surface border border-border rounded-xl p-6 shadow-card backdrop-blur-sm;
   }
   
   .quiz-card {
-    @apply bg-surface border border-white/10 rounded-lg p-4 shadow-card hover:shadow-hover transition-shadow duration-200;
+    @apply bg-surface border border-border rounded-xl p-6 shadow-card hover:shadow-hover hover:border-accent/30 transition-all duration-300 transform hover:scale-[1.01];
   }
   
   .miniapp-card {
-    @apply bg-surface border border-white/10 rounded-lg p-4 shadow-card hover:shadow-hover transition-all duration-200 hover:border-accent/30;
+    @apply bg-surface border border-border rounded-xl p-5 shadow-card hover:shadow-hover hover:border-accent/30 transition-all duration-300 transform hover:scale-[1.01] cursor-pointer;
+  }
+
+  .interactive-card {
+    @apply bg-surface border border-border rounded-xl p-4 shadow-card hover:shadow-hover hover:border-accent/30 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.99] cursor-pointer;
   }
   
   .input-field {
@@ -67,4 +99,32 @@
 @keyframes slideUp {
   from { transform: translateY(10px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+  40%, 43% { transform: translate3d(0, -8px, 0); }
+  70% { transform: translate3d(0, -4px, 0); }
+  90% { transform: translate3d(0, -2px, 0); }
+}
+
+.loading-skeleton {
+  background: linear-gradient(90deg, hsl(240 5% 15%) 25%, hsl(240 5% 18%) 50%, hsl(240 5% 15%) 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
 }
