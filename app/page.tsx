@@ -34,55 +34,63 @@ export default function Home() {
     <div className="min-h-screen bg-bg">
       <div className="max-w-md w-full mx-auto px-4">
         {/* Header */}
-        <header className="flex justify-between items-center py-4">
-          <div className="flex items-center space-x-2">
-            <h1 className="text-xl font-semibold text-text">MiniApp IQ</h1>
+        <header className="flex justify-between items-center py-6 border-b border-border/50">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-lg">🧠</span>
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-text">MiniApp IQ</h1>
+              <p className="text-xs text-muted">Test your Base knowledge</p>
+            </div>
           </div>
           <div className="flex items-center space-x-2">
             {context && !context.client.added && (
               <button
                 onClick={handleAddFrame}
-                className="bg-primary text-white px-3 py-1 rounded text-sm hover:bg-primary/90 transition-colors"
+                className="btn-primary text-sm px-4 py-2"
               >
-                SAVE
+                💾 Save
               </button>
             )}
             <button
               onClick={handleViewProfile}
-              className="text-accent text-sm font-semibold hover:text-accent/80 transition-colors"
+              className="btn-ghost text-sm px-3 py-2 text-accent"
             >
-              PROFILE
+              👤 Profile
             </button>
             <button
               onClick={close}
-              className="text-muted text-sm font-semibold hover:text-text transition-colors"
+              className="btn-icon text-muted hover:text-text"
             >
-              CLOSE
+              ✕
             </button>
           </div>
         </header>
 
         {/* Tab Navigation */}
-        <nav className="flex space-x-1 mb-6 bg-surface rounded-lg p-1">
+        <nav className="flex space-x-2 mb-8 bg-surface-light rounded-xl p-2 mt-6">
           <button
             onClick={() => setActiveTab('quiz')}
-            className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+            className={`flex-1 py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center space-x-2 ${
               activeTab === 'quiz'
-                ? 'bg-primary text-white'
-                : 'text-muted hover:text-text'
+                ? 'bg-primary text-white shadow-lg transform scale-[1.02]'
+                : 'text-muted hover:text-text hover:bg-surface'
             }`}
           >
-            Quiz
+            <span>🧩</span>
+            <span>Quiz</span>
           </button>
           <button
             onClick={() => setActiveTab('trending')}
-            className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+            className={`flex-1 py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center space-x-2 ${
               activeTab === 'trending'
-                ? 'bg-primary text-white'
-                : 'text-muted hover:text-text'
+                ? 'bg-primary text-white shadow-lg transform scale-[1.02]'
+                : 'text-muted hover:text-text hover:bg-surface'
             }`}
           >
-            Trending
+            <span>🔥</span>
+            <span>Trending</span>
           </button>
         </nav>
 
